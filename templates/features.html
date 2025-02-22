@@ -1,0 +1,139 @@
+{% extends "base.html" %}
+
+{% block title %}Performance Prediction - AI for Construction{% endblock %}
+
+{% block content %}
+<div class="container text-center mt-5">
+    <h1 class="text-gradient display-4 fw-bold">Predict Construction Performance with AI</h1>
+    <p class="lead text-secondary">Leverage AI to predict key performance metrics for your construction projects.</p>
+</div>
+
+<!-- Prediction Form -->
+<section class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6">
+            <div class="card shadow-sm p-4 rounded">
+                <h3 class="text-center fw-semibold">Enter Project Data</h3>
+                <form id="predictionForm">
+                    <div class="mb-3">
+                        <input type="number" name="Temperature (°C)" class="form-control" placeholder="Temperature (°C)" required>
+                    </div>
+                    <div class="mb-3">
+                        <input type="number" name="Humidity (%)" class="form-control" placeholder="Humidity (%)" required>
+                    </div>
+                    <div class="mb-3">
+                        <input type="number" name="Vibration_Level (Hz)" class="form-control" placeholder="Vibration Level (Hz)" required>
+                    </div>
+                    <div class="mb-3">
+                        <input type="number" name="Material_Usage (kg)" class="form-control" placeholder="Material Usage (kg)" required>
+                    </div>
+                    <div class="mb-3">
+                        <input type="number" name="Energy_Consumption (kWh)" class="form-control" placeholder="Energy Consumption (kWh)" required>
+                    </div>
+                    <div class="mb-3">
+                        <input type="number" name="Worker_Count" class="form-control" placeholder="Worker Count" required>
+                    </div>
+                    <div class="mb-3">
+                        <input type="number" name="Resource_Utilization (%)" class="form-control" placeholder="Resource Utilization (%)" required>
+                    </div>
+                    <div class="mb-3">
+                        <input type="number" name="Simulation_Accuracy (%)" class="form-control" placeholder="Simulation Accuracy (%)" required>
+                    </div>
+                    <div class="d-grid">
+                        <button type="button" class="btn btn-gradient fw-semibold" onclick="predict()">Predict Performance</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Prediction Result -->
+<section class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6">
+            <div class="result-card p-4 rounded shadow-sm text-center">
+                <h4 class="fw-semibold">Performance Prediction Result</h4>
+                <p id="predictionResult" class="fs-5 text-muted">Your prediction result will be displayed here.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    body {
+        font-family: 'Inter', sans-serif;
+    }
+    .text-gradient {
+        background: linear-gradient(45deg, #28a745, #218838);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+    .btn-gradient {
+        background: linear-gradient(45deg, #1e7e34, #19692c);
+        color: white;
+        padding: 12px 24px;
+        border-radius: 8px;
+        text-decoration: none;
+        font-size: 1rem;
+    }
+    .btn-gradient:hover {
+        background: linear-gradient(45deg, #19692c, #1e7e34);
+    }
+    .card {
+        background: #f8f9fa;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    .result-card {
+        background: #eaf2e6;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    input[type="number"] {
+        border-radius: 8px;
+        border: 1px solid #ccc;
+        padding: 12px;
+        font-size: 1rem;
+    }
+    input[type="number"]:focus {
+        outline: none;
+        border-color: #28a745;
+    }
+    .container {
+        max-width: 900px;
+    }
+</style>
+
+<script>
+    function predict() {
+    let formData = {};
+    document.querySelectorAll("#predictionForm input").forEach(input => {
+        formData[input.name] = parseFloat(input.value);
+    });
+
+    console.log("Sending data:", formData); // Debugging
+
+    fetch('/predict', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData)
+    })
+    .then(response => {
+        console.log("Response status:", response.status);
+        return response.json();
+    })
+    .then(data => {
+        console.log("Response data:", data);
+        if (data.error) {
+            document.getElementById("predictionResult").innerHTML = `Error: ${data.error}`;
+        } else {
+            document.getElementById("predictionResult").innerHTML = `Prediction: ${data["Random Forest Prediction"]}`;
+        }
+    })
+    .catch(error => console.error('Fetch Error:', error));
+}
+
+</script>
+
+{% endblock %}
