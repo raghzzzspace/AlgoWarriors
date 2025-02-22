@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+
+{% block title %}Contact Us - Algo Warriors{% endblock %}
+
+{% block content %}
+<div class="container mt-5 mb-5 fadeIn">
+    <h1 class="text-success text-center fw-bold">Contact Us</h1>
+    <p class="text-center text-muted">We'd love to hear from you! Feel free to reach out.</p>
+    <form class="mx-auto w-50 border p-4 shadow-lg rounded contact-form" id="contact-form">
+        <div class="mb-3">
+            <label for="name" class="form-label text-white">Name:</label>
+            <input type="text" id="name" name="name" class="form-control shadow-sm border-0" required>
+        </div>
+        <div class="mb-3">
+            <label for="email" class="form-label text-white">Email:</label>
+            <input type="email" id="email" name="email" class="form-control shadow-sm border-0" required>
+        </div>
+        <div class="mb-3">
+            <label for="message" class="form-label text-white">Message:</label>
+            <textarea id="message" name="message" class="form-control shadow-sm border-0" rows="4" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-success w-100 btn-lg fw-bold shadow">Send Message</button>
+    </form>
+</div>
+
+<style>
+
+
+.fadeIn {
+    animation: fadeIn 0.8s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.contact-form {
+    background: linear-gradient(135deg, #0B4035, #2E8B57);
+    color: white;
+}
+
+.contact-form input,
+.contact-form textarea {
+    border-radius: 8px;
+    padding: 12px;
+    font-size: 1rem;
+    transition: box-shadow 0.3s ease;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    box-shadow: 0 4px 10px rgba(255, 255, 255, 0.2);
+    outline: none;
+}
+</style>
+
+<script>
+document.getElementById("contact-form").addEventListener("submit", function(event) {
+    event.preventDefault();
+    alert("Thank you for reaching out! We will get back to you soon.");
+    this.reset();
+});
+</script>
+{% endblock %}

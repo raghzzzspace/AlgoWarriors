@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+
+{% block title %}About Us - Algo Warriors{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <!-- About Us Header -->
+    <section class="text-center mb-5">
+        <h1 class="display-4 text-success fw-bold fadeInUp">About Algo Warriors</h1>
+        <p class="lead text-secondary fadeInUp" style="animation-delay: 0.3s;">
+            We are a team of AI and ML enthusiasts dedicated to revolutionizing construction project execution.
+        </p>
+
+          <!-- Team Section -->
+<section class="row d-flex justify-content-center text-center">
+    <!-- Team Member: Raghvi Gupta -->
+    <div class="col-lg-4 col-md-6 col-sm-12 d-flex justify-content-center mb-4">
+        <div class="team-member fadeInUp"
+            style="width: 300px; height: 350px; display: flex; flex-direction: column; align-items: center; justify-content: center;
+                border-radius: 10px; transition: transform 0.3s ease-in-out;
+                background: linear-gradient(135deg, #0B4035, #2E8B57); 
+                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+                backdrop-filter: blur(10px); 
+                border: 1px solid rgba(255, 255, 255, 0.2);">
+            <img src="{{ url_for('static', filename='raghvi.jpg') }}" alt="Raghvi Gupta"
+                style="width: 120px; height: 120px; border-radius: 50%; border: 3px solid #28a745; object-fit: cover;">
+            <h3 class="fw-bold mt-3 text-white">Raghvi Gupta</h3>
+            <p class="text-white">AI/ML Developer | Data Science</p>
+        </div>
+    </div>
+
+    <!-- Team Member: Muskaan Mehta -->
+    <div class="col-lg-4 col-md-6 col-sm-12 d-flex justify-content-center mb-4">
+        <div class="team-member fadeInUp"
+            style="width: 300px; height: 350px; display: flex; flex-direction: column; align-items: center; justify-content: center;
+                border-radius: 10px; transition: transform 0.3s ease-in-out;
+                background: linear-gradient(135deg, #093028, #237A57); 
+                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+                backdrop-filter: blur(10px); 
+                border: 1px solid rgba(255, 255, 255, 0.2);">
+            <img src="{{ url_for('static', filename='muskaan.jpg') }}" alt="Muskaan Mehta"
+                style="width: 120px; height: 120px; border-radius: 50%; border: 3px solid #28a745; object-fit: cover;">
+            <h3 class="fw-bold mt-3 text-white">Muskaan Mehta</h3>
+            <p class="text-white">Full Stack Developer | Web Technologies</p>
+        </div>
+    </div>
+
+    <!-- Team Member: Nishika Agarwal -->
+    <div class="col-lg-4 col-md-6 col-sm-12 d-flex justify-content-center mb-4">
+        <div class="team-member fadeInUp"
+            style="width: 300px; height: 350px; display: flex; flex-direction: column; align-items: center; justify-content: center;
+                border-radius: 10px; transition: transform 0.3s ease-in-out;
+                background: linear-gradient(135deg, #093028, #237A57); 
+                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+                backdrop-filter: blur(10px); 
+                border: 1px solid rgba(255, 255, 255, 0.2);">
+            <img src="{{ url_for('static', filename='nishika.jpg') }}" alt="Nishika Agarwal"
+                style="width: 120px; height: 120px; border-radius: 50%; border: 3px solid #28a745; object-fit: cover;">
+            <h3 class="fw-bold mt-3 text-white">Nishika Agarwal</h3>
+            <p class="text-white">Data Analyst | Predictive Modeling</p>
+        </div>
+    </div>
+    </section>
+</div>
+{% endblock %}
